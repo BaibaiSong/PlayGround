@@ -1,17 +1,17 @@
 __author__ = 'Song'
-from utils import mnist_reader
+#from utils import mnist_reader
 import numpy as np
 import tensorflow as tf
 
 
-def get_fashion_data():
-    root = 'fashion'
-    X_train, Y_train = mnist_reader.load_mnist(root, kind='train')
-    X_test, Y_test = mnist_reader.load_mnist(root, kind='t10k')
-    print(X_train.shape)
-    print(Y_train.shape)
-    print(X_test.shape)
-    print(Y_test.shape)
+# def get_fashion_data():
+#     root = 'fashion'
+#     X_train, Y_train = mnist_reader.load_mnist(root, kind='train')
+#     X_test, Y_test = mnist_reader.load_mnist(root, kind='t10k')
+#     print(X_train.shape)
+#     print(Y_train.shape)
+#     print(X_test.shape)
+#     print(Y_test.shape)
 
 def get_data():
     N = 100  # sample
@@ -39,10 +39,10 @@ def add_layer(inputs, d, neural_num, n_layer, activate_function=None):
     layer_name = 'layer %d' % n_layer
     with tf.name_scope('layer'):
         with tf.name_scope('weights'):
-            weight = tf.Variable(tf.random_normal([d, neural_num]), name='weight')
+            weight = tf.Variable(tf.random_normal([d, neural_num]), name='w')
             tf.summary.histogram(layer_name+'/weights', weight)
     with tf.name_scope('bias'):
-        bias = tf.Variable(tf.zeros([1, neural_num])+0.1, name='bias')
+        bias = tf.Variable(tf.zeros([1, neural_num])+0.1, name='b')
         tf.summary.histogram(layer_name+'/bias', bias)
 
     with tf.name_scope('wx_plus_b'):
@@ -67,8 +67,9 @@ def taskgo():
     print(yy[195:205])
 
     hidden = 128
-    xtrain = tf.placeholder(tf.float32, [None, d])
-    ytrain = tf.placeholder(tf.float32, [None, 3])
+    with tf.name_scope('inputs'):
+        xtrain = tf.placeholder(tf.float32, [None, d], name='x_input')
+        ytrain = tf.placeholder(tf.float32, [None, 3], name='y_input')
 
     l1 = add_layer(xtrain, 2, hidden, 1, activate_function=tf.nn.relu)
 
