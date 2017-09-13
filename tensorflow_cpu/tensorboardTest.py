@@ -41,18 +41,18 @@ def add_layer(inputs, d, neural_num, n_layer, activate_function=None):
         with tf.name_scope('weights'):
             weight = tf.Variable(tf.random_normal([d, neural_num]), name='w')
             tf.summary.histogram(layer_name+'/weights', weight)
-    with tf.name_scope('bias'):
-        bias = tf.Variable(tf.zeros([1, neural_num])+0.1, name='b')
-        tf.summary.histogram(layer_name+'/bias', bias)
+        with tf.name_scope('bias'):
+            bias = tf.Variable(tf.zeros([1, neural_num])+0.1, name='b')
+            tf.summary.histogram(layer_name+'/bias', bias)
 
-    with tf.name_scope('wx_plus_b'):
-        wx_plus_b = tf.matmul(inputs, weight)+bias
+        with tf.name_scope('wx_plus_b'):
+            wx_plus_b = tf.matmul(inputs, weight)+bias
 
-    if activate_function is None:
-        output = wx_plus_b
-    else:
-        output = activate_function(wx_plus_b)
-    tf.summary.histogram(layer_name+'/output', output)
+        if activate_function is None:
+            output = wx_plus_b
+        else:
+            output = activate_function(wx_plus_b)
+        tf.summary.histogram(layer_name+'/output', output)
     return output
 
 
