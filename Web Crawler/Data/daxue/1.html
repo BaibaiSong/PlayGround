@@ -1,0 +1,1142 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><!--STATUS OK--><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>大学校花 - 校花100_校花一百_中国校花校草大赛官方网站</title>
+<meta name="description" content="校花100是中国校花校草大赛指定的官方网站,它汇集了一百多所学校的往届大学、高中校花校草的精选图片和个人资料,更囊括了数以万计报名参加本届校花校草大赛的帅哥美女,还在等什么?赶快一起来赏美女帅哥,为你心仪的女神和王子投上一票吧!" />
+<meta name="keywords" content="校花100,校花一百,校花,校草,校花校草,校花校草大赛,中国校花校草大赛" />									
+<link href="/resource/css/jquery_plugin/jquery-combo-min.css" rel="stylesheet" type="text/css" media="screen"/>
+<link href="/resource/css/style-combo-min.css" rel="stylesheet" type="text/css" media="screen"/>
+<script type="text/javascript" src="/resource/js/jquery-combo-min.js"></script>
+<script type="text/javascript" src="/resource/js/qwrap-combo-min.js"></script>
+<script language="javascript" type="text/javascript" src="/include/dedeajax2.js"></script>
+<script>
+function CheckLogin(){
+	  var taget_obj = document.getElementById('_ajax_feedback');
+	  myajax = new DedeAjax(taget_obj,false,false,'','','');
+	  myajax.SendGet2("/member/ajax_feedback.php");
+	  DedeXHTTP = null;
+}
+function postBadGood(ftype,fid)
+{
+	var taget_obj = document.getElementById(ftype+fid);
+	var saveid = GetCookie('badgoodid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==fid && hasid) continue;
+			else {
+				if(saveids[i]==fid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==10 && hasid) break;
+				if(j==9 && !hasid) break;
+			}
+		}
+		if(hasid) { alert('您刚才已表决过了喔！'); return false;}
+		else saveid += ','+fid;
+		SetCookie('badgoodid',saveid,1);
+	}
+	else
+	{
+		SetCookie('badgoodid',fid,1);
+	}
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("/plus/feedback.php?aid="+fid+"&action="+ftype+"&fid="+fid);
+}
+function postDigg(ftype,aid)
+{
+	var taget_obj = document.getElementById('newdigg_'+aid);
+	var saveid = GetCookie('digg_'+aid);
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==aid && hasid) continue;
+			else {
+				if(saveids[i]==aid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==20 && hasid) break;
+				if(j==19 && !hasid) break;
+			}
+		}
+		if(hasid) { alert("您已经顶过该帖，请不要重复顶帖 ！"); return; }
+		else saveid += ','+aid;
+		SetCookie('digg_'+aid,saveid,1);
+	}
+	else
+	{
+		SetCookie('digg_'+aid,aid,1);
+	}
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	var url = "/plus/digg_ajax.php?action="+ftype+"&id="+aid;
+	myajax.SendGet2(url);
+}
+function getDigg(aid)
+{
+	var taget_obj = document.getElementById('newdigg');
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("/plus/digg_ajax.php?id="+aid);
+	DedeXHTTP = null;
+}
+-->
+</script>
+</head>
+<body >
+<!-- Copyright  2005. Spidersoft Ltd -->
+<style>
+A.applink:hover {border: 2px dotted #DCE6F4;padding:2px;background-color:#ffff00;color:green;text-decoration:none}
+A.applink       {border: 2px dotted #DCE6F4;padding:2px;color:#2F5BFF;background:transparent;text-decoration:none}
+A.info          {color:#2F5BFF;background:transparent;text-decoration:none}
+A.info:hover    {color:green;background:transparent;text-decoration:underline}
+</style>
+<a name="top"></a>
+<div class="wrap">
+	<a href="#top" class="goTop" id="goTop"/></a>
+	<div id="header" module="nav">
+
+<div class="outline1 sp">
+			<div class="out-wrap container" module="header1" style="width:927px;">
+				<a href="/" class="logo sp" module-tag="logo"></a>
+				<div class="nav-emt">
+					<p class="slogan sp"></p>
+				</div>
+				<div class="nav-opt nav-hover">
+					<a id="fire_help" href="/a/bangzhuzhongxin" class="nav-help">
+						<div class="i-arrow"><span class="i-empty icon-help"></span></div>
+						<div class="b-line"></div>
+					</a>
+				</div>
+				<div class="nav-opt">
+					<div class="nav-search">
+						<form action="/plus/search.php" method="get">
+							<div class="nav-search-wrap">
+								<input type="text" name="q" value="" class="nav-search-text" autocomplete="off" maxlength="30" hint="输入学校全称或姓名"/>
+								<input type="submit" value="" class="nav-search-submit" title="点击搜索"/>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="nav-opt">
+					<!--<a href="http://weibo.com/woxihuanwang" target="_blank" title="官方微博" class="weibo sp" module-tag="weibo"><span>16万<span></a>-->
+					<a href="/a/bangzhuzhongxin/" title="大赛报名须知" class="btn_about_ilike" module-tag="about-ilike" target="_blank"></a>
+				</div>
+			</div>
+			<div class="out-tip">
+				<div class="container" style="width:927px;">
+					<div id="help_cate" style="display:none;">
+						<ul>
+							<li><a href="/a/guanyuwomen/"><span class="i-text icon-aboutus">关于我们</span></a></li>
+                            <li><a href="/a/bangzhuzhongxin/"><span class="i-text icon-helpus">帮助中心</span></a></li>
+                            <li><a href="/a/lianxiwomen/"><span class="i-text icon-tool">联系我们</span></a></li>
+                            <li><a href="http://weibo.com/u/5560055370"><span class="i-text icon-feed">官方微博</span></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+    	<div class="outline2">
+			<div class="out-wrap box box-b">
+				<div class="box-shadow">
+					<span class="t"></span><span class="l"></span><span class="r"></span><span class="b"></span>
+				</div>
+				<div class="box-wrap">
+					<div class="container"  module="header2" style="width:927px;">
+						<div class="nav-emt sp">
+							<h2><a id="fire_new" class="i-arrow select">全部栏目</a></h2>
+							<ul>
+								<li><a href="/daxue/"  module-tag="jiajue">大学校花</a></li>
+								<li><a href="/gaozhong/" class="" module-tag="meishi">高中校花</a></li>
+								<li><a href="/guowai/"  module-tag="lvyou">国外校花</a></li>
+								<li><a href="/pingxuan/"  module-tag="sheying">校花评选</a></li>
+                                                                <li><a href="/xiaocao/"  module-tag="sheying">校草</a></li>
+                                                                <li><a href="/bbs/forum.php?gid=66" target="_blank" style="color:red" module-tag="sheying">在线报名</a></li>
+								<li class="end"><a href="/bbs/"  target="_blank" style="color:red" class="i-new "module-tag="sheji">互动社区</a></li>
+							</ul>
+						</div>
+						<div class="nav-emt sp">
+							<h2><a>热门</a></h2>
+							<ul>
+							<li><a href="http://www.xiaohua100.cn/bbs/forum-71-1.html" target="_blank" module-tag="jingxuan">校花新闻</a></li>
+							<li class="end"><a href="http://www.xiaohua100.cn/bbs/forum-72-1.html" target="_blank" class="i-new " module-tag="xinxian">校花视频</a></li>
+							</ul>
+						</div>
+					   
+                      </div>
+				</div>
+			</div>
+			
+            <div class="out-tip">
+				<div class="container" module="headerbox" style="width:927px;">
+					<div id="new_cate" class="box box-lrb" style="display:none;">
+						<div class="box-shadow">
+							<span class="t"></span><span class="l"></span><span class="r"></span><span class="b"></span>
+						</div>
+						<div class="box-wrap">
+							<ul>
+                                
+                                      <li><a href='/daxue/' >大学校花</a></li> 
+                                
+                                      <li><a href='/gaozhong/' >高中校花</a></li> 
+                                
+                                      <li><a href='/guowai/' >国外校花</a></li> 
+                                
+                                      <li><a href='/pingxuan/' >校花评选</a></li> 
+                                
+                                      <li><a href='/xiaocao/' >帅哥校草</a></li> 
+                                
+                                      <li><a href='/fengjing/' >校园风景</a></li> 
+                                
+                                      <li><a href='/xiezhen/' >魅惑写真泳装美女</a></li> 
+                                
+                                      <li><a href='/mote/' >校花模特</a></li> 
+                                
+							</ul>
+						</div>
+					</div>
+                    <!--未登录时显示-->
+                <span id='_userlogin_float'>
+				<div id="tip_login" class="box box-lrb" style="display:none;">
+						<div class="box-shadow">
+							<span class="t"></span><span class="l"></span><span class="r"></span><span class="b"></span>
+						</div>
+						
+					</div>
+                </span>
+             </div>
+			</div>
+            
+		</div>
+    
+
+</div>
+			<div id="doc" class="container" style="width:927px;">
+		<div id="bd" class="clearfix">
+    <div id="waterfall" module="waterfall">
+        <style type="text/css">
+b.hot_icon{
+    background: url(resource/css/img/HOT.gif) no-repeat scroll center center transparent;
+    padding: 0 15px;
+    *width:1px; *height: 1px;
+}
+a.aoyun-tag{
+    background: url(resource/css/img/aoyun-btn.png) no-repeat scroll 0 0 transparent;
+    color:#fff;display:block;height:22px;margin-bottom:10px;padding:3px 10px; text-align:center;width: 102px;
+}
+a.aoyun-tag:hover{
+    background-position: 0 -29px;
+}
+a.aoyun-tag:active{
+    background-position: 0 -58px;
+}
+.seal-container .cate-2{*padding-top:0;float:left}
+.seal-title,.seal-push .seal-msgbox #seal-submit,.seal-push .seal-succ .seal-succ-p1,.seal-push .seal-arrow-down,.seal-push .seal-arrow-up,.seal-box .seal-col-num, .seal-box .seal-fans-num{background:url(resource/css/img/seal_bg.gif~v=20121212.gif) no-repeat 0 0;}
+.seal-box .seal-col-num a,.seal-box .seal-fans-num a{color:#999}
+.seal-box .seal-col-num{background-position: -151px -41px;padding-left: 16px;}
+.seal-box .seal-fans-num{background-position: -151px -65px;padding-left: 16px;}
+.seal-box{padding:10px 15px;color:#000;float:left}
+.seal-box .seal-user{width:100%;float:left;margin:5px 0;font-size:12px;}
+.seal-box .seal-user .seal-num{color:#999;margin-top:5px;}
+.seal-box .seal-r{width:130px;float:left;line-height:20px;height:50px;margin-left:5px;}
+.seal-box .seal-l{float:left;display:block;}
+.seal-push .seal-msgbox,.seal-push .seal-succ{display:none;text-align:left;line-height:25px;padding-top:15px;*width:192px;}
+.seal-push .seal-msgbox #seal-url{border:1px #F9EBDA solid;width:185px;height:25px;padding-left:5px;line-height:25px;color:#AAAAAA}
+.seal-push .seal-msgbox #seal-submit{width:65px;height:30px;background-position:0 -39px;margin:3px 0 0 129px;border:0;cursor:pointer;}
+.seal-push .seal-msgbox #seal-submit:active{background-position:0 -74px;}
+.seal-push .seal-succ .seal-succ-p1{background-position:-116px -38px;width:100px;padding-left:22px;color:#666666;}
+.seal-push .seal-succ .seal-succ-p2{line-height:20px;}
+.seal-push a{width: 100%;display: block;padding-top: 12px;text-decoration:none;}
+.seal-push .seal-arrow-down{background-position:-15px -108px;}
+.seal-push .seal-arrow-up{background-position:-15px -133px;}
+.seal-title{height:35px;width:202px;font-size:12px;font-weight:normal;color:#000;line-height:35px;margin:1px 0 1px 2px;padding-left:15px;border-bottom:1px solid #EEEEEE;}
+.seal-info{font-size:12px;padding-left:15px;line-height:35px;height:35px;border-bottom:1px solid #F8F8F8;color:#999;}
+.seal-info a{color:#999;}
+.seal-info .seal-join{color:red;margin-left:60px;}
+.seal-push{background:#FFFAEB;padding:0 14px 12px 14px;float:left;width:192px;border-top:1px solid #EEEEEE;font-size:12px;text-align:center;}
+</style>
+
+ 
+<div class="side_2 left-tag-box"  data-position="0">
+        <div class="cate-2" style="padding-top:0;">
+
+             <div class="taglist-title2 tag-title">
+            	<a href="/">最新全部</a>
+            </div>
+            <div class="tag-title taglist-title3">最新标签</div>
+            <div class="bd taglist-list clearfix" module="tagbox-sub">
+            
+               <a href="/tags.php?/%E5%8C%97%E5%BD%B1%E6%A0%A1%E8%8A%B1/" class="tag  "><span>北影校花</span></a>
+            
+               <a href="/tags.php?/%E4%B8%AD%E5%9B%BD%E4%BC%A0%E5%AA%92%E5%A4%A7%E5%AD%A6%E6%A0%A1%E8%8A%B1/" class="tag  "><span>中国传媒大学校花</span></a>
+            
+               <a href="/tags.php?/%E5%AD%A6%E9%9C%B8%E6%A0%A1%E8%8A%B1/" class="tag  "><span>学霸校花</span></a>
+            
+               <a href="/tags.php?/%E4%B8%8A%E6%88%8F%E6%A0%A1%E8%8A%B1/" class="tag  "><span>上戏校花</span></a>
+            
+               <a href="/tags.php?/%E5%8D%8E%E7%A7%91%E6%A0%A1%E8%8A%B1/" class="tag  "><span>华科校花</span></a>
+            
+               <a href="/tags.php?/%E6%B7%B1%E5%9C%B3%E5%A4%A7%E5%AD%A6%E6%A0%A1%E8%8A%B1/" class="tag  "><span>深圳大学校花</span></a>
+            
+               <a href="/tags.php?/%E6%A0%A1%E8%8D%89/" class="tag  "><span>校草</span></a>
+            
+               <a href="/tags.php?/%E6%B0%94%E8%B4%A8%E6%A0%A1%E8%8A%B1/" class="tag  "><span>气质校花</span></a>
+            
+               <a href="/tags.php?/%E6%B8%85%E7%BA%AF%E6%A0%A1%E8%8A%B1/" class="tag  "><span>清纯校花</span></a>
+            
+               <a href="/tags.php?/%E5%B0%8F%E8%90%9D%E8%8E%89/" class="tag  "><span>小萝莉</span></a>
+            
+               <a href="/tags.php?/%E5%8C%97%E4%BD%93%E6%A0%A1%E8%8A%B1/" class="tag  "><span>北体校花</span></a>
+            
+               <a href="/tags.php?/%E4%BA%BA%E4%BD%93%E6%A8%A1%E7%89%B9/" class="tag  "><span>人体模特</span></a>
+            
+               <a href="/tags.php?/%E5%8C%97%E4%BA%AC%E5%A4%A7%E5%AD%A6%E6%A0%A1%E8%8A%B1/" class="tag  "><span>北京大学校花</span></a>
+            
+               <a href="/tags.php?/%E5%8C%97%E4%BA%AC%E8%88%9E%E8%B9%88%E5%AD%A6%E9%99%A2%E6%A0%A1%E8%8A%B1/" class="tag  "><span>北京舞蹈学院校花</span></a>
+            
+               <a href="/tags.php?/%E6%B8%85%E7%BA%AF/" class="tag  "><span>清纯</span></a>
+            
+               <a href="/tags.php?/%E7%B4%A0%E9%A2%9C%E8%87%AA%E6%8B%8D/" class="tag  "><span>素颜自拍</span></a>
+            
+               <a href="/tags.php?/%E7%BE%8E%E5%9B%BD%E6%A0%A1%E8%8A%B1%E5%A4%A7%E8%B5%9B/" class="tag  "><span>美国校花大赛</span></a>
+            
+               <a href="/tags.php?/%E7%94%9C%E7%B4%A0%E7%BA%AF/" class="tag  "><span>甜素纯</span></a>
+            
+               <a href="/tags.php?/%E7%99%BD%E7%B4%A0%E6%B8%85/" class="tag  "><span>白素清</span></a>
+            
+               <a href="/tags.php?/%E5%88%98%E9%9B%AF%E9%9B%AF/" class="tag  "><span>刘雯雯</span></a>
+            
+               <a href="/tags.php?/%E6%B0%94%E8%B4%A8/" class="tag  "><span>气质</span></a>
+            
+               <a href="/tags.php?/%E5%94%AF%E7%BE%8E%E5%86%99%E7%9C%9F/" class="tag  "><span>唯美写真</span></a>
+            
+               <a href="/tags.php?/%E7%BE%8E%E5%A5%B3%E6%A8%A1%E7%89%B9/" class="tag  "><span>美女模特</span></a>
+            
+               <a href="/tags.php?/%E5%8F%AF%E7%88%B1%E7%BE%8E%E5%A5%B3/" class="tag  "><span>可爱美女</span></a>
+            
+               <a href="/tags.php?/90%E5%90%8E%E7%BE%8E%E7%9C%89/" class="tag  "><span>90后美眉</span></a>
+            
+               <a href="/tags.php?/%E6%97%A5%E6%9C%AC%E7%BE%8E%E5%A5%B3/" class="tag  "><span>日本美女</span></a>
+            
+               <a href="/tags.php?/%E5%8C%97%E4%BA%AC%E7%94%B5%E5%BD%B1%E5%AD%A6%E9%99%A2%E6%A0%A1%E8%8A%B1/" class="tag  "><span>北京电影学院校花</span></a>
+            
+               <a href="/tags.php?/%E5%A4%A7%E5%AD%A6%E7%BE%8E%E5%A5%B3/" class="tag  "><span>大学美女</span></a>
+            
+               <a href="/tags.php?/%E6%B5%B7%E5%8D%97%E7%BB%8F%E8%B4%B8%E8%81%8C%E4%B8%9A%E6%8A%80%E6%9C%AF%E5%AD%A6%E9%99%A2/" class="tag  "><span>海南经贸职业技术学院</span></a>
+            
+               <a href="/tags.php?/%E5%B9%BF%E4%B8%9C%E7%9C%81%E5%8D%8E%E7%AB%8B%E6%8A%80%E5%B8%88%E5%AD%A6%E9%99%A2/" class="tag  "><span>广东省华立技师学院</span></a>
+            
+			</div>
+         </div>
+</div>	
+<div id= "bookmark_953" 
+		 class="p-cell cellItem nofavorite backwater" 
+		 data-bid="953" 
+		 data-uid="1" 
+		data-btype="3" 
+		data-url="" 
+		 data-viewType="10"
+		 data-reurl="" 
+		 data-fullTitle="北京电影学院“学霸校花”李依伊_北影校花李依伊"
+		 data-albid="953"
+		 data-tagname="全部"
+		 data-cid=""
+		 data-recom="1">
+
+		<div class="pic">
+			<div id="animate_953" class="animate"></div>
+										<a target='_blank' module-tag='image' module-click='true' href="/daxue/bjxh.html"><img  src='/uploads/allimg/170713/1-1FG3143146459-lp.jpg' alt="北京电影学院“学霸校花”李依伊_北影校花李依伊" width='196' height='180' /></a> 
+									<div class="pic-overflow"></div>
+			
+							
+		</div>
+		<h3><span class="cellTit"><a href="/daxue/bjxh.html" target="_blank">北京电影学院“学霸校花”李依伊_北影校花李依伊</a></span>
+			<div>
+				<a class="praise-num" title="0人赞过" href="javascript:postDigg('good',953)" id='newdigg_953'>0</a>
+				
+				<a href="/daxue/bjxh.html#comment" class="cmt-num" title="0条评论" target="_blank" href="#">0</a>
+				<span class="sc" title="此图已私藏"></span>
+			</div>
+		</h3>
+		
+	</div>
+<div id= "bookmark_939" 
+		 class="p-cell cellItem nofavorite backwater" 
+		 data-bid="939" 
+		 data-uid="1" 
+		data-btype="3" 
+		data-url="" 
+		 data-viewType="10"
+		 data-reurl="" 
+		 data-fullTitle="中传校花王萌黎,新戏那片星空那片海正在播出"
+		 data-albid="939"
+		 data-tagname="全部"
+		 data-cid=""
+		 data-recom="1">
+
+		<div class="pic">
+			<div id="animate_939" class="animate"></div>
+										<a target='_blank' module-tag='image' module-click='true' href="/daxue/939.html"><img  src='/uploads/allimg/170221/1-1F2211955170-L.jpg' alt="中传校花王萌黎,新戏那片星空那片海正在播出" width='196' height='286' /></a> 
+									<div class="pic-overflow"></div>
+			
+							
+		</div>
+		<h3><span class="cellTit"><a href="/daxue/939.html" target="_blank">中传校花王萌黎,新戏那片星空那片海正在播出</a></span>
+			<div>
+				<a class="praise-num" title="88人赞过" href="javascript:postDigg('good',939)" id='newdigg_939'>88</a>
+				
+				<a href="/daxue/939.html#comment" class="cmt-num" title="0条评论" target="_blank" href="#">0</a>
+				<span class="sc" title="此图已私藏"></span>
+			</div>
+		</h3>
+		
+	</div>
+<div id= "bookmark_938" 
+		 class="p-cell cellItem nofavorite backwater" 
+		 data-bid="938" 
+		 data-uid="1" 
+		data-btype="3" 
+		data-url="" 
+		 data-viewType="10"
+		 data-reurl="" 
+		 data-fullTitle="韩国东国大学校花王贺"
+		 data-albid="938"
+		 data-tagname="全部"
+		 data-cid=""
+		 data-recom="1">
+
+		<div class="pic">
+			<div id="animate_938" class="animate"></div>
+										<a target='_blank' module-tag='image' module-click='true' href="/daxue/938.html"><img  src='/uploads/allimg/170221/1-1F2211944500-L.jpg' alt="韩国东国大学校花王贺" width='196' height='264' /></a> 
+									<div class="pic-overflow"></div>
+			
+							
+		</div>
+		<h3><span class="cellTit"><a href="/daxue/938.html" target="_blank">韩国东国大学校花王贺</a></span>
+			<div>
+				<a class="praise-num" title="71人赞过" href="javascript:postDigg('good',938)" id='newdigg_938'>71</a>
+				
+				<a href="/daxue/938.html#comment" class="cmt-num" title="0条评论" target="_blank" href="#">0</a>
+				<span class="sc" title="此图已私藏"></span>
+			</div>
+		</h3>
+		
+	</div>
+<div id= "bookmark_937" 
+		 class="p-cell cellItem nofavorite backwater" 
+		 data-bid="937" 
+		 data-uid="1" 
+		data-btype="3" 
+		data-url="" 
+		 data-viewType="10"
+		 data-reurl="" 
+		 data-fullTitle="华南农业大学珠江学院校花娜娜"
+		 data-albid="937"
+		 data-tagname="全部"
+		 data-cid=""
+		 data-recom="1">
+
+		<div class="pic">
+			<div id="animate_937" class="animate"></div>
+										<a target='_blank' module-tag='image' module-click='true' href="/daxue/937.html"><img  src='/uploads/allimg/170221/1-1F2211934430-L.jpg' alt="华南农业大学珠江学院校花娜娜" width='196' height='293' /></a> 
+									<div class="pic-overflow"></div>
+			
+							
+		</div>
+		<h3><span class="cellTit"><a href="/daxue/937.html" target="_blank">华南农业大学珠江学院校花娜娜</a></span>
+			<div>
+				<a class="praise-num" title="74人赞过" href="javascript:postDigg('good',937)" id='newdigg_937'>74</a>
+				
+				<a href="/daxue/937.html#comment" class="cmt-num" title="0条评论" target="_blank" href="#">0</a>
+				<span class="sc" title="此图已私藏"></span>
+			</div>
+		</h3>
+		
+	</div>
+<div id= "bookmark_936" 
+		 class="p-cell cellItem nofavorite backwater" 
+		 data-bid="936" 
+		 data-uid="1" 
+		data-btype="3" 
+		data-url="" 
+		 data-viewType="10"
+		 data-reurl="" 
+		 data-fullTitle="中央戏剧学院校花胡馨月"
+		 data-albid="936"
+		 data-tagname="全部"
+		 data-cid=""
+		 data-recom="1">
+
+		<div class="pic">
+			<div id="animate_936" class="animate"></div>
+										<a target='_blank' module-tag='image' module-click='true' href="/daxue/936.html"><img  src='/uploads/allimg/170221/1-1F221192S70-L.jpg' alt="中央戏剧学院校花胡馨月" width='196' height='264' /></a> 
+									<div class="pic-overflow"></div>
+			
+							
+		</div>
+		<h3><span class="cellTit"><a href="/daxue/936.html" target="_blank">中央戏剧学院校花胡馨月</a></span>
+			<div>
+				<a class="praise-num" title="67人赞过" href="javascript:postDigg('good',936)" id='newdigg_936'>67</a>
+				
+				<a href="/daxue/936.html#comment" class="cmt-num" title="0条评论" target="_blank" href="#">0</a>
+				<span class="sc" title="此图已私藏"></span>
+			</div>
+		</h3>
+		
+	</div>
+<div id= "bookmark_935" 
+		 class="p-cell cellItem nofavorite backwater" 
+		 data-bid="935" 
+		 data-uid="1" 
+		data-btype="3" 
+		data-url="" 
+		 data-viewType="10"
+		 data-reurl="" 
+		 data-fullTitle="浙江传媒学院校花翁心颖最新写真照片"
+		 data-albid="935"
+		 data-tagname="全部"
+		 data-cid=""
+		 data-recom="1">
+
+		<div class="pic">
+			<div id="animate_935" class="animate"></div>
+										<a target='_blank' module-tag='image' module-click='true' href="/daxue/935.html"><img  src='/uploads/allimg/170221/1-1F2211916360-L.jpg' alt="浙江传媒学院校花翁心颖最新写真照片" width='196' height='264' /></a> 
+									<div class="pic-overflow"></div>
+			
+							
+		</div>
+		<h3><span class="cellTit"><a href="/daxue/935.html" target="_blank">浙江传媒学院校花翁心颖最新写真照片</a></span>
+			<div>
+				<a class="praise-num" title="67人赞过" href="javascript:postDigg('good',935)" id='newdigg_935'>67</a>
+				
+				<a href="/daxue/935.html#comment" class="cmt-num" title="0条评论" target="_blank" href="#">0</a>
+				<span class="sc" title="此图已私藏"></span>
+			</div>
+		</h3>
+		
+	</div>
+<div id= "bookmark_897" 
+		 class="p-cell cellItem nofavorite backwater" 
+		 data-bid="897" 
+		 data-uid="1" 
+		data-btype="3" 
+		data-url="" 
+		 data-viewType="10"
+		 data-reurl="" 
+		 data-fullTitle="伦敦大学皇家霍络威学院校花张宁,英伦校园女神"
+		 data-albid="897"
+		 data-tagname="全部"
+		 data-cid=""
+		 data-recom="1">
+
+		<div class="pic">
+			<div id="animate_897" class="animate"></div>
+										<a target='_blank' module-tag='image' module-click='true' href="/daxue/897.html"><img  src='/uploads/allimg/160528/1-16052R130270-L.jpg' alt="伦敦大学皇家霍络威学院校花张宁,英伦校园女神" width='196' height='281' /></a> 
+									<div class="pic-overflow"></div>
+			
+							
+		</div>
+		<h3><span class="cellTit"><a href="/daxue/897.html" target="_blank">伦敦大学皇家霍络威学院校花张宁,英伦校园女神</a></span>
+			<div>
+				<a class="praise-num" title="12531人赞过" href="javascript:postDigg('good',897)" id='newdigg_897'>12531</a>
+				
+				<a href="/daxue/897.html#comment" class="cmt-num" title="0条评论" target="_blank" href="#">0</a>
+				<span class="sc" title="此图已私藏"></span>
+			</div>
+		</h3>
+		
+	</div>
+<div id= "bookmark_894" 
+		 class="p-cell cellItem nofavorite backwater" 
+		 data-bid="894" 
+		 data-uid="1" 
+		data-btype="3" 
+		data-url="" 
+		 data-viewType="10"
+		 data-reurl="" 
+		 data-fullTitle="四川音乐学院校花王个个照片,阳光开朗的川音校花"
+		 data-albid="894"
+		 data-tagname="全部"
+		 data-cid=""
+		 data-recom="1">
+
+		<div class="pic">
+			<div id="animate_894" class="animate"></div>
+										<a target='_blank' module-tag='image' module-click='true' href="/daxue/894.html"><img  src='/uploads/allimg/160526/1-1605262005550-L.jpg' alt="四川音乐学院校花王个个照片,阳光开朗的川音校花" width='196' height='265' /></a> 
+									<div class="pic-overflow"></div>
+			
+							
+		</div>
+		<h3><span class="cellTit"><a href="/daxue/894.html" target="_blank">四川音乐学院校花王个个照片,阳光开朗的川音校花</a></span>
+			<div>
+				<a class="praise-num" title="137人赞过" href="javascript:postDigg('good',894)" id='newdigg_894'>137</a>
+				
+				<a href="/daxue/894.html#comment" class="cmt-num" title="0条评论" target="_blank" href="#">0</a>
+				<span class="sc" title="此图已私藏"></span>
+			</div>
+		</h3>
+		
+	</div>
+<div id= "bookmark_891" 
+		 class="p-cell cellItem nofavorite backwater" 
+		 data-bid="891" 
+		 data-uid="1" 
+		data-btype="3" 
+		data-url="" 
+		 data-viewType="10"
+		 data-reurl="" 
+		 data-fullTitle="中国传媒大学校花厉蔺菲个人资料及照片,最佳素颜美女"
+		 data-albid="891"
+		 data-tagname="全部"
+		 data-cid=""
+		 data-recom="1">
+
+		<div class="pic">
+			<div id="animate_891" class="animate"></div>
+										<a target='_blank' module-tag='image' module-click='true' href="/daxue/891.html"><img  src='/uploads/allimg/160514/1-1605141944300-L.jpg' alt="中国传媒大学校花厉蔺菲个人资料及照片,最佳素颜美女" width='196' height='242' /></a> 
+									<div class="pic-overflow"></div>
+			
+							
+		</div>
+		<h3><span class="cellTit"><a href="/daxue/891.html" target="_blank">中国传媒大学校花厉蔺菲个人资料及照片,最佳素颜美女</a></span>
+			<div>
+				<a class="praise-num" title="173人赞过" href="javascript:postDigg('good',891)" id='newdigg_891'>173</a>
+				
+				<a href="/daxue/891.html#comment" class="cmt-num" title="0条评论" target="_blank" href="#">0</a>
+				<span class="sc" title="此图已私藏"></span>
+			</div>
+		</h3>
+		
+	</div>
+<div id= "bookmark_890" 
+		 class="p-cell cellItem nofavorite backwater" 
+		 data-bid="890" 
+		 data-uid="1" 
+		data-btype="3" 
+		data-url="" 
+		 data-viewType="10"
+		 data-reurl="" 
+		 data-fullTitle="浙江传媒学院校花吕咏蓝,播音主持专业的冷感女王"
+		 data-albid="890"
+		 data-tagname="全部"
+		 data-cid=""
+		 data-recom="1">
+
+		<div class="pic">
+			<div id="animate_890" class="animate"></div>
+										<a target='_blank' module-tag='image' module-click='true' href="/daxue/890.html"><img  src='/uploads/allimg/160514/1-1605141K4400-L.jpg' alt="浙江传媒学院校花吕咏蓝,播音主持专业的冷感女王" width='196' height='213' /></a> 
+									<div class="pic-overflow"></div>
+			
+							
+		</div>
+		<h3><span class="cellTit"><a href="/daxue/890.html" target="_blank">浙江传媒学院校花吕咏蓝,播音主持专业的冷感女王</a></span>
+			<div>
+				<a class="praise-num" title="53人赞过" href="javascript:postDigg('good',890)" id='newdigg_890'>53</a>
+				
+				<a href="/daxue/890.html#comment" class="cmt-num" title="0条评论" target="_blank" href="#">0</a>
+				<span class="sc" title="此图已私藏"></span>
+			</div>
+		</h3>
+		
+	</div>
+<div id= "bookmark_887" 
+		 class="p-cell cellItem nofavorite backwater" 
+		 data-bid="887" 
+		 data-uid="1" 
+		data-btype="3" 
+		data-url="" 
+		 data-viewType="10"
+		 data-reurl="" 
+		 data-fullTitle="北京体育大学校花王越生活照及走红照片"
+		 data-albid="887"
+		 data-tagname="全部"
+		 data-cid=""
+		 data-recom="1">
+
+		<div class="pic">
+			<div id="animate_887" class="animate"></div>
+										<a target='_blank' module-tag='image' module-click='true' href="/daxue/887.html"><img  src='/uploads/allimg/160512/1-1605122003570-L.jpg' alt="北京体育大学校花王越生活照及走红照片" width='196' height='140' /></a> 
+									<div class="pic-overflow"></div>
+			
+							
+		</div>
+		<h3><span class="cellTit"><a href="/daxue/887.html" target="_blank">北京体育大学校花王越生活照及走红照片</a></span>
+			<div>
+				<a class="praise-num" title="41人赞过" href="javascript:postDigg('good',887)" id='newdigg_887'>41</a>
+				
+				<a href="/daxue/887.html#comment" class="cmt-num" title="0条评论" target="_blank" href="#">0</a>
+				<span class="sc" title="此图已私藏"></span>
+			</div>
+		</h3>
+		
+	</div>
+<div id= "bookmark_874" 
+		 class="p-cell cellItem nofavorite backwater" 
+		 data-bid="874" 
+		 data-uid="1" 
+		data-btype="3" 
+		data-url="" 
+		 data-viewType="10"
+		 data-reurl="" 
+		 data-fullTitle="上戏校花朱圣祎个人资料照片,上海戏剧学院2014级表演本科"
+		 data-albid="874"
+		 data-tagname="全部"
+		 data-cid=""
+		 data-recom="1">
+
+		<div class="pic">
+			<div id="animate_874" class="animate"></div>
+										<a target='_blank' module-tag='image' module-click='true' href="/daxue/874.html"><img  src='/uploads/allimg/160423/1-1604231333300-L.jpg' alt="上戏校花朱圣祎个人资料照片,上海戏剧学院2014级表演本科" width='196' height='281' /></a> 
+									<div class="pic-overflow"></div>
+			
+							
+		</div>
+		<h3><span class="cellTit"><a href="/daxue/874.html" target="_blank">上戏校花朱圣祎个人资料照片,上海戏剧学院2014级表演本科</a></span>
+			<div>
+				<a class="praise-num" title="91人赞过" href="javascript:postDigg('good',874)" id='newdigg_874'>91</a>
+				
+				<a href="/daxue/874.html#comment" class="cmt-num" title="0条评论" target="_blank" href="#">0</a>
+				<span class="sc" title="此图已私藏"></span>
+			</div>
+		</h3>
+		
+	</div>
+<div id= "bookmark_869" 
+		 class="p-cell cellItem nofavorite backwater" 
+		 data-bid="869" 
+		 data-uid="1" 
+		data-btype="3" 
+		data-url="" 
+		 data-viewType="10"
+		 data-reurl="" 
+		 data-fullTitle="北京电影学院校花苏倩薇|苏茜薇写真生活照"
+		 data-albid="869"
+		 data-tagname="全部"
+		 data-cid=""
+		 data-recom="1">
+
+		<div class="pic">
+			<div id="animate_869" class="animate"></div>
+										<a target='_blank' module-tag='image' module-click='true' href="/daxue/869.html"><img  src='/uploads/allimg/160411/1-1604112001370-L.jpg' alt="北京电影学院校花苏倩薇|苏茜薇写真生活照" width='196' height='297' /></a> 
+									<div class="pic-overflow"></div>
+			
+							
+		</div>
+		<h3><span class="cellTit"><a href="/daxue/869.html" target="_blank">北京电影学院校花苏倩薇|苏茜薇写真生活照</a></span>
+			<div>
+				<a class="praise-num" title="121人赞过" href="javascript:postDigg('good',869)" id='newdigg_869'>121</a>
+				
+				<a href="/daxue/869.html#comment" class="cmt-num" title="0条评论" target="_blank" href="#">0</a>
+				<span class="sc" title="此图已私藏"></span>
+			</div>
+		</h3>
+		
+	</div>
+<div id= "bookmark_868" 
+		 class="p-cell cellItem nofavorite backwater" 
+		 data-bid="868" 
+		 data-uid="1" 
+		data-btype="3" 
+		data-url="" 
+		 data-viewType="10"
+		 data-reurl="" 
+		 data-fullTitle="中国戏曲学院校花杨梓墨"
+		 data-albid="868"
+		 data-tagname="全部"
+		 data-cid=""
+		 data-recom="1">
+
+		<div class="pic">
+			<div id="animate_868" class="animate"></div>
+										<a target='_blank' module-tag='image' module-click='true' href="/daxue/868.html"><img  src='/uploads/allimg/160411/1-1604111922240-L.jpg' alt="中国戏曲学院校花杨梓墨" width='196' height='292' /></a> 
+									<div class="pic-overflow"></div>
+			
+							
+		</div>
+		<h3><span class="cellTit"><a href="/daxue/868.html" target="_blank">中国戏曲学院校花杨梓墨</a></span>
+			<div>
+				<a class="praise-num" title="46人赞过" href="javascript:postDigg('good',868)" id='newdigg_868'>46</a>
+				
+				<a href="/daxue/868.html#comment" class="cmt-num" title="0条评论" target="_blank" href="#">0</a>
+				<span class="sc" title="此图已私藏"></span>
+			</div>
+		</h3>
+		
+	</div>
+<div id= "bookmark_859" 
+		 class="p-cell cellItem nofavorite backwater" 
+		 data-bid="859" 
+		 data-uid="1" 
+		data-btype="3" 
+		data-url="" 
+		 data-viewType="10"
+		 data-reurl="" 
+		 data-fullTitle="台湾文化大学校花张凯玲,极品女神"
+		 data-albid="859"
+		 data-tagname="全部"
+		 data-cid=""
+		 data-recom="1">
+
+		<div class="pic">
+			<div id="animate_859" class="animate"></div>
+										<a target='_blank' module-tag='image' module-click='true' href="/daxue/859.html"><img  src='/uploads/allimg/160319/1-160319200K10-L.jpg' alt="台湾文化大学校花张凯玲,极品女神" width='196' height='246' /></a> 
+									<div class="pic-overflow"></div>
+			
+							
+		</div>
+		<h3><span class="cellTit"><a href="/daxue/859.html" target="_blank">台湾文化大学校花张凯玲,极品女神</a></span>
+			<div>
+				<a class="praise-num" title="33人赞过" href="javascript:postDigg('good',859)" id='newdigg_859'>33</a>
+				
+				<a href="/daxue/859.html#comment" class="cmt-num" title="0条评论" target="_blank" href="#">0</a>
+				<span class="sc" title="此图已私藏"></span>
+			</div>
+		</h3>
+		
+	</div>
+<div id= "bookmark_858" 
+		 class="p-cell cellItem nofavorite backwater" 
+		 data-bid="858" 
+		 data-uid="1" 
+		data-btype="3" 
+		data-url="" 
+		 data-viewType="10"
+		 data-reurl="" 
+		 data-fullTitle="广东东软学院最萌校花秦思的个人资料和私房照"
+		 data-albid="858"
+		 data-tagname="全部"
+		 data-cid=""
+		 data-recom="1">
+
+		<div class="pic">
+			<div id="animate_858" class="animate"></div>
+										<a target='_blank' module-tag='image' module-click='true' href="/daxue/858.html"><img  src='/uploads/allimg/160319/1-1603191934210-L.jpg' alt="广东东软学院最萌校花秦思的个人资料和私房照" width='196' height='249' /></a> 
+									<div class="pic-overflow"></div>
+			
+							
+		</div>
+		<h3><span class="cellTit"><a href="/daxue/858.html" target="_blank">广东东软学院最萌校花秦思的个人资料和私房照</a></span>
+			<div>
+				<a class="praise-num" title="57人赞过" href="javascript:postDigg('good',858)" id='newdigg_858'>57</a>
+				
+				<a href="/daxue/858.html#comment" class="cmt-num" title="0条评论" target="_blank" href="#">0</a>
+				<span class="sc" title="此图已私藏"></span>
+			</div>
+		</h3>
+		
+	</div>
+<div id= "bookmark_854" 
+		 class="p-cell cellItem nofavorite backwater" 
+		 data-bid="854" 
+		 data-uid="1" 
+		data-btype="3" 
+		data-url="" 
+		 data-viewType="10"
+		 data-reurl="" 
+		 data-fullTitle="上海戏剧学院校花王羽墨,上戏校花王羽墨"
+		 data-albid="854"
+		 data-tagname="全部"
+		 data-cid=""
+		 data-recom="1">
+
+		<div class="pic">
+			<div id="animate_854" class="animate"></div>
+										<a target='_blank' module-tag='image' module-click='true' href="/daxue/854.html"><img  src='/uploads/allimg/160316/1-160316205F50-L.jpg' alt="上海戏剧学院校花王羽墨,上戏校花王羽墨" width='196' height='297' /></a> 
+									<div class="pic-overflow"></div>
+			
+							
+		</div>
+		<h3><span class="cellTit"><a href="/daxue/854.html" target="_blank">上海戏剧学院校花王羽墨,上戏校花王羽墨</a></span>
+			<div>
+				<a class="praise-num" title="52人赞过" href="javascript:postDigg('good',854)" id='newdigg_854'>52</a>
+				
+				<a href="/daxue/854.html#comment" class="cmt-num" title="0条评论" target="_blank" href="#">0</a>
+				<span class="sc" title="此图已私藏"></span>
+			</div>
+		</h3>
+		
+	</div>
+<div id= "bookmark_852" 
+		 class="p-cell cellItem nofavorite backwater" 
+		 data-bid="852" 
+		 data-uid="1" 
+		data-btype="3" 
+		data-url="" 
+		 data-viewType="10"
+		 data-reurl="" 
+		 data-fullTitle="天津大学校花刘梦夏“材料女神”"
+		 data-albid="852"
+		 data-tagname="全部"
+		 data-cid=""
+		 data-recom="1">
+
+		<div class="pic">
+			<div id="animate_852" class="animate"></div>
+										<a target='_blank' module-tag='image' module-click='true' href="/daxue/852.html"><img  src='/uploads/allimg/160315/1-1603152135360-L.jpg' alt="天津大学校花刘梦夏“材料女神”" width='196' height='289' /></a> 
+									<div class="pic-overflow"></div>
+			
+							
+		</div>
+		<h3><span class="cellTit"><a href="/daxue/852.html" target="_blank">天津大学校花刘梦夏“材料女神”</a></span>
+			<div>
+				<a class="praise-num" title="41人赞过" href="javascript:postDigg('good',852)" id='newdigg_852'>41</a>
+				
+				<a href="/daxue/852.html#comment" class="cmt-num" title="0条评论" target="_blank" href="#">0</a>
+				<span class="sc" title="此图已私藏"></span>
+			</div>
+		</h3>
+		
+	</div>
+<div id= "bookmark_839" 
+		 class="p-cell cellItem nofavorite backwater" 
+		 data-bid="839" 
+		 data-uid="1" 
+		data-btype="3" 
+		data-url="" 
+		 data-viewType="10"
+		 data-reurl="" 
+		 data-fullTitle="中国传媒大学校花,雪糕妹妹李炫臻"
+		 data-albid="839"
+		 data-tagname="全部"
+		 data-cid=""
+		 data-recom="1">
+
+		<div class="pic">
+			<div id="animate_839" class="animate"></div>
+										<a target='_blank' module-tag='image' module-click='true' href="/daxue/839.html"><img  src='/uploads/allimg/160228/1-16022R030500-L.jpg' alt="中国传媒大学校花,雪糕妹妹李炫臻" width='196' height='297' /></a> 
+									<div class="pic-overflow"></div>
+			
+							
+		</div>
+		<h3><span class="cellTit"><a href="/daxue/839.html" target="_blank">中国传媒大学校花,雪糕妹妹李炫臻</a></span>
+			<div>
+				<a class="praise-num" title="47人赞过" href="javascript:postDigg('good',839)" id='newdigg_839'>47</a>
+				
+				<a href="/daxue/839.html#comment" class="cmt-num" title="0条评论" target="_blank" href="#">0</a>
+				<span class="sc" title="此图已私藏"></span>
+			</div>
+		</h3>
+		
+	</div>
+<div id= "bookmark_811" 
+		 class="p-cell cellItem nofavorite backwater" 
+		 data-bid="811" 
+		 data-uid="1" 
+		data-btype="3" 
+		data-url="" 
+		 data-viewType="10"
+		 data-reurl="" 
+		 data-fullTitle="翁心颖,中国最美校花,毕业于浙江传媒学院影视艺术学院"
+		 data-albid="811"
+		 data-tagname="全部"
+		 data-cid=""
+		 data-recom="1">
+
+		<div class="pic">
+			<div id="animate_811" class="animate"></div>
+										<a target='_blank' module-tag='image' module-click='true' href="/daxue/811.html"><img  src='/uploads/allimg/151206/1-1512061421090-L.jpg' alt="翁心颖,中国最美校花,毕业于浙江传媒学院影视艺术学院" width='196' height='270' /></a> 
+									<div class="pic-overflow"></div>
+			
+							
+		</div>
+		<h3><span class="cellTit"><a href="/daxue/811.html" target="_blank">翁心颖,中国最美校花,毕业于浙江传媒学院影视艺术学院</a></span>
+			<div>
+				<a class="praise-num" title="92人赞过" href="javascript:postDigg('good',811)" id='newdigg_811'>92</a>
+				
+				<a href="/daxue/811.html#comment" class="cmt-num" title="0条评论" target="_blank" href="#">0</a>
+				<span class="sc" title="此图已私藏"></span>
+			</div>
+		</h3>
+		
+	</div>
+
+    </div>
+
+    <div id="loading" class="loading" style="visibility:hidden">
+	<p><img src="/resource/img/loading.gif" alt="加载进度条" align="absmiddle" /> 正在加载...</p>
+</div>
+
+		</div>
+	</div>
+			﻿	<div id="ft">
+		<div id="ft_content" class="container" style="width:927px;">
+			<p class="p-1">
+				<a href="/daxue/" target="_blank">大学校花</a>|<a href="/gaozhong/" target="_blank">高中校花</a>|<a href="/pingxuan/" target="_blank">校花评选</a>|<a href="/guowai/" target="_blank">国外校花</a>
+				
+			</p>
+			<p class="p-2">
+				Copyright 2015 <a href="http://www.xiaohua100.cn" target="_blank">校花100</a> www.xiaohua100.cn<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1254099298'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1254099298%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script> 
+                <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?90671d7c1de87901fed4f902856667ff";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<div id="kefu2">
+    <div class="cs_qcode">
+        <img src="http://www.xiaohua100.cn/Uploads/erweima.jpg" title="微信扫一扫有惊喜" /> 
+    </div>
+</div>
+<style>
+#kefu2{position:fixed; right:0px; bottom:250px; z-index:10008; padding: 10px; background: #fff; font-size: 12px;}
+.cs_qcode{padding: 5px 0px 0px 0px;}
+</style>
+   <a target="_blank" href="http://www.miitbeian.gov.cn/" rel=“nofollow”>鄂ICP备14001852号-2</a>
+<a href="/bbs" target="_blank">校花贴吧</a>
+<a href="/sitemap.html" target="_blank">网站地图</a>
+<a href="/xiaocao/index.html" target="_blank">校草</a>
+<a href="http://www.whhzhx.cn" target="_blank">武汉网站建设</a>
+			</p>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">/**//**//**/
+Dom.ready(function(){
+	var resize = function(){Como.Cookie.del('WIN_WIDTH', null);
+	var w = Como(window).width();
+	if(w < 1170){Como('div.container, #album_list_title').width(927);
+	  Como.Cookie.set('WIN_WIDTH_NEW', 927, 0, '/', '.woxihuan.com');
+	  window._cookie_winwidth = 927;} 
+	else {
+		Como('div.container, #album_list_title').width(1162);
+		Como.Cookie.set('WIN_WIDTH_NEW', 1162, 0, '/', '.u18a.com');
+		window._cookie_winwidth = 1162;}}
+		;Como(window).on('resize', resize);resize();});
+    </script>
+<script type="text/javascript" src="/resource/js/ilike-combo-min.js"></script>
+						
+
+<script type="text/javascript">
+var _fr_ = '';
+//add by sv. 定义我喜欢基础通用js变量......
+ilike._baseData = ilike._baseData || {
+	'qid' : 0,
+	'testMode' :  false,
+	'ts':'135874808804',
+	'tk':'cb50cab524b3be07ac28fc6141350f86',
+	'albums': (function(){
+		var albums = [];
+		albums.push(['15', '服饰搭配']);albums.push(['5', '家居装饰']);albums.push(['6', '化妆造型']);albums.push(['4', '美食']);albums.push(['2', '旅游']);albums.push(['1', '美女']);albums.push(['9', '汽车']);albums.push(['20', '历史军事探索']);albums.push(['8', '图书影音+插画']);albums.push(['3', '摄影']);albums.push(['13', '萌趣']);albums.push(['14', '创意设计+物件']);albums.push(['17', '婚纱婚礼']);albums.push(['19', '时尚科技']);albums.push(['99', '其它']);		return albums;
+	})()
+};
+
+//base执行入口
+Dom.ready(function(){
+	/**/
+	var _extVal = {'ts': ilike._baseData.ts, 'tk' :ilike._baseData.tk };
+	$.ajaxSetup({ data :  _extVal});
+	$.extend( Ajax.extData, _extVal); //For old Ajax code.
+	ilike.base.init();
+		try{ $.cookie( 'SCREEN_SIZE', window.screen.width+"x"+window.screen.height, { expires: 365, path: '/', domain: 'woxihuan.com' }); }catch(ex){}
+});
+</script>
+
+
+<script type="text/javascript">
+                window.PAGE_NAME = 'new';
+        //Dom加载完成后，执行计算宽度
+    countWFSize();
+    Dom.ready(function(){
+        //瀑布流式图片查看
+        WaterFall.conf({
+            'container' : '#waterfall',
+            'block' : '#waterfall>div',
+            'blkWidth' :222,
+            'blkRight' : 13,
+            'blkBottom' : 13
+        });
+        ilike.getmore.isScrollAbled();
+
+            });
+    //推荐内容给海豹管理员
+    $('.seal-btn-push').click(function(){
+            $('.seal-msgbox').slideToggle();
+            $('#seal-url').val("http://");
+            $('.seal-succ').hide();
+            setTimeout('WaterFall.stream(".col0");$(".seal-btn-push").toggleClass("seal-arrow-down");$(".seal-btn-push").toggleClass("seal-arrow-up");', 500);
+    });
+    $('#seal-url').click(function(){
+            $('#seal-url').css('border','1px #EAD3B4 solid');
+    });
+    $("#seal-url").keydown(function(){
+            setTimeout('checksealurl()', 100);
+    });
+    function checksealurl(){
+            var sealurl = $("#seal-url").val();
+            if(sealurl.indexOf("woxihuan.com") > 0 ){
+                    $('#seal-url').css('color','#666666');
+                    $("#seal-url").val(sealurl.replace("http://http://","http://"));
+            }
+    }
+    $('#seal-submit').click(function(){
+        var content=$("#seal-url").val();
+        content=$.trim(content);
+        if(content.indexOf("woxihuan.com") > 0 ){
+            $.post('/msg/sealmsg',{'sealqids':'', 'content' : content},function(d){
+                if(d.errno==''){
+                    $('.seal-msgbox').hide();
+                    $('.seal-succ').fadeIn();
+                }else{
+                    $('#seal-tips').html(d.errmsg);
+                }
+            },"json");
+        }else{
+            $('#seal-tips').attr('style','color:red');
+            $('#seal-tips').html('请粘贴"站内URL"');
+        }
+    });
+</script>
+<script type="text/javascript">
+    Dom.ready(function(){
+        //下拉动态加载[翻页]
+        ilike.getmore.init({'url' : '/plus/waterfall.php?tid=1&sort=lastpost&totalresult=856','display':'pic','container':'#waterfall','stream':true, 'last_id' : '1358747256127773'});
+        //定时器：用于根据窗口大小排列瀑布流
+        (function(){
+            var timer_resize = null;
+            window.onresize = function(){
+                if(!timer_resize){
+                    timer_resize = setTimeout(function(){
+                        countWFSize();
+                        timer_resize = null;
+                    },400)
+                }
+            }
+        })();
+
+        var _taglistTimer;
+        $('.cate-2 .taglist-more').bind('mouseenter', function(){
+            var _this = this;
+            _taglistTimer = setTimeout( function(){
+                    $(_this).addClass('taglist-more-hover');
+                    $(_this).find('.taglist-more-list').show();//fadeIn();
+            }, 300);
+
+
+        }).bind('mouseleave', function(){
+
+            clearTimeout( _taglistTimer );
+
+            $(this).removeClass('taglist-more-hover');
+            $(this).find('.taglist-more-list').hide();//fadeOut();
+
+        });
+            });
+
+    </script>
+
+</body>
+</html>
