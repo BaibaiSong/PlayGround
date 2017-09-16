@@ -18,18 +18,38 @@ def craw(url):
     #     file.write(data)
 
     with open("Data/daxue/2.html", "rb") as file:
-        data = str(file.read())
+        data = str(file.read().decode("utf-8"))
     # print(data)
-    part1 = "/uploads/allimg/.*?\.jpg"
-    part2 = "\'>\d+?</a>"
+    part1img = "/uploads/allimg/.*?\.jpg"
+    part2good = "'>\d+?</a>"
+    part3name = 'target="_blank">(.*?)<'
 
-    imagelist = re.compile(part1).findall(data)
+    imagelist = re.compile(part1img).findall(data)
     print(imagelist)
     print(len(imagelist))
 
-    good1 = re.compile(part2).findall(data)
+    good1 = re.compile(part2good).findall(data)
     print(good1)
     print(len(good1))
+
+    imagenamelist = re.compile(part3name).findall(data)
+    print(imagenamelist)
+    print(len(imagenamelist))
+
+    ## start crawl image
+    # i = 1
+    # for img in imagelist:
+    #     imgurl = "http://xiaohua100.cn" + img
+    #     imgname = "Data/daxue/ %d" % i + ".jpg"
+    #     # print(imgurl+'\n')
+    #     try:
+    #         urllib.request.urlretrieve(imgurl, filename=imgname)
+    #     except urllib.request.URLError as e:
+    #         if hasattr(e, "code"):
+    #             i += 1
+    #         if hasattr(e, "reason"):
+    #             i += 1
+    #     i += 1
     return data
 
 
